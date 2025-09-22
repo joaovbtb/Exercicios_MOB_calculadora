@@ -72,7 +72,6 @@ def converter_para_numeros(string_valores):
     numeros = []
     for valor in string_valores.split():
         try:
-            # Tenta converter para float para maior precisão, mas se for inteiro, ele funcionará bem.
             numeros.append(float(valor))
         except ValueError:
             raise ValueError(f"Valor inválido: '{valor}'. Por favor, insira apenas números.")
@@ -105,12 +104,9 @@ def calculadora():
                 if len(valores) != 2:
                     raise ValueError(f"A operação '{operacao_input}' requer exatamente 2 valores.")
                 resultado = funcao(*valores)
-            elif operacao_input in ['!', 'sen', 'cos', 'tg', 'abs']:
+            elif operacao_input in ['!', 'sen', 'cos', 'tg']:
                 if len(valores) != 1:
                     raise ValueError(f"A operação '{operacao_input}' requer exatamente 1 valor.")
-                # Converte para int para fatorial
-                if operacao_input == '!':
-                    resultado = fatorial(int(valores[0]))
                 else:
                     resultado = funcao(*valores)
             else:
@@ -119,10 +115,8 @@ def calculadora():
             print(f'Resultado: {resultado}')
         
         except (ValueError, TypeError, ZeroDivisionError) as e:
-            # Captura os erros e mostra uma mensagem amigável para o usuário.
             print(f"Erro: {e}")
         except Exception as e:
-            # Captura qualquer outro erro inesperado.
             print(f"Ocorreu um erro inesperado: {e}")
 
 
