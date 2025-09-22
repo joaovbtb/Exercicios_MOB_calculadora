@@ -1,13 +1,74 @@
+
 import math
 #faremos nessa file a criação de uma calculadora implementando os conhecimentos que obtivemos no MOB
 
 #Operações necessárias:
 # adição, subtração(), multiplicação, potenciação(), exponencial (logarítmica), mod (resto)(), absoluto, trigonométricas
 
-#desafios citados:
-#Read.Me , Histórico de operações, tratamento de erros, testes unitários, simulação de conflitos (ultimo)
+# faremos nessa file a criação de uma calculadora implementando os conhecimentos que obtivemos no MOB
+
+
+# desafios citados:
+# Read.Me , Histórico de operações, simulação de conflitos (ultimo)
+
+
+historico_operacoes = 0
 
 #parte voltada para a definição das funções:
+while True:
+    print("\n--- Menu da Calculadora ---")
+    print("1. Somar")
+    print("2. Subtrair")
+    print("3. Exponencial")
+    print("4. Logaritmo")
+    print("5. Logaritmo Natural")
+    print("6. Valor Absoluto")
+    print("7. Ver Histórico")
+    print("8. Sair")
+
+    escolha = input("Escolha a operação (1-8): ")
+
+    if escolha == "8":
+        print("Obrigado por usar a calculadora!")
+        break
+
+    if escolha == "7":
+        print("\n--- Histórico de Operações ---")
+        if not historico_operacoes:
+            print("Nenhuma operação no histórico ainda.")
+        else:
+            for operacao in historico_operacoes:
+                print(operacao)
+        continue
+
+    if escolha in ("1", "2", "3", "4", "5", "6"):
+        try:
+            if escolha in ("1", "2", "3", "4"):
+                a = float(input("Digite o primeiro número: "))
+                b = float(input("Digite o segundo número: "))
+            elif escolha == "5":
+                a = float(input("Digite um número: "))
+
+            if escolha == "1":
+                print("Resultado:", soma(a, b))
+            elif escolha == "2":
+                # print("Resultado:", subtrair(a, b))
+                print("Esssa parte é do João")
+            elif escolha == "3":
+                print("Resultado:", exponencial(a, b))
+            elif escolha == "4":
+                base = b
+                print("Resultado:", logaritmo(a, base))
+            elif escolha == "5":
+                print("Resultado:", logaritmo_natural(a))
+            elif escolha == "6":
+                print("Resultado:", absoluto(a))
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número.")
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
+    else:
+        print("Opção inválida. Por favor, tente novamente.")
 
 def subtracao(*args):
     if len(args) == 0:
@@ -17,7 +78,32 @@ def subtracao(*args):
         resultado -= num
     return resultado
 
+def multiplicação(a, b):
+    resultado = a * b
+    adicionar_ao_historico(f"{a} * {b}, {resultado}")
+    return resultado
 
+def soma(a, b):
+    resultado = a + b
+    adicionar_ao_historico(f"{a} + {b}, {resultado}")
+    return resultado
+
+def exponencial(a, b):
+    resultado = a**b
+    adicionar_ao_historico(f"{a} ** {b}, {resultado}")
+    return resultado
+
+def logaritmo_natural(a):
+    resultado = math.log(a)
+    adicionar_ao_historico(f"logaritmo natural({a}), {resultado}")
+    return resultado
+
+
+def absoluto(a):
+    resultado = abs(a)
+    adicionar_ao_historico(f"absoluto({a}), {resultado}")
+    return resultado
+  
 def divisao(a, b):
     if b == 0:
         raise ZeroDivisionError("Divisão por zero não é permitida.")
@@ -56,6 +142,7 @@ operacoes = {
     'log': logaritmo,
     '!': fatorial,
     '%': modulo,
+    '+' : soma,
     'sen': seno,
     'cos': cosseno,
     'tg': tangente,
@@ -76,6 +163,11 @@ def converter_para_numeros(string_valores):
         except ValueError:
             raise ValueError(f"Valor inválido: '{valor}'. Por favor, insira apenas números.")
     return numeros
+  
+  #adiciona ao histórico 
+  def adicionar_ao_historico(operacao, resultado):
+    linha_historico = f"{operacao} = {resultado}"
+    historico_operacoes.append(linha_historico)
 
 #função principal da calculadora
 
@@ -130,5 +222,7 @@ if __name__ == '__main__':
 
 
 
+# Operações necessárias:
+# adição, multiplicação, exponencial (logarítmica), absoluto,
 
 
