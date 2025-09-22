@@ -201,12 +201,3 @@ if __name__ == '__main__':
     calculadora()
 
 
-
-
-
-
-
-# Operações necessárias:
-# adição, multiplicação, exponencial (logarítmica), absoluto,
-
-
