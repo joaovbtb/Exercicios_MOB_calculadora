@@ -96,10 +96,10 @@ def calculadora():
             valores_input = input('Digite os valores, separados por espaço: ')
             valores = converter_para_numeros(valores_input)
 
-            # Executa a operação com base no que foi digitado.
+            # resgata a função correspondente à operação
             funcao = operacoes[operacao_input]
             
-            # Algumas funções precisam de um número específico de argumentos.
+            # corrige a falta de algorismos para certas operações
             if operacao_input in ['/', '**', 'log', '%']:
                 if len(valores) != 2:
                     raise ValueError(f"A operação '{operacao_input}' requer exatamente 2 valores.")
@@ -124,11 +124,6 @@ def calculadora():
 if __name__ == '__main__':
     calculadora()
 
-#padronização dos commits [nome da sua branch] + :
-#_feat = add de novas funcionalidades
-#_fix = resolução de bugs
-#_docs = mudança da documentação
-#_refactor = melhoria da performance do código sem alterar o comportamento em si 
 
 
 
@@ -136,8 +131,4 @@ if __name__ == '__main__':
 
 
 
-#Relatório pessoal de melhorias:
-#1 - fazer as funções virarem desempacotamentos de argumentos
-#2 - mudar o ultimo print() da função calculadora() em algo mais entendível talvez
-#3 - pensar na possibilidade de mudar os números de int para float (pensar como abordar isso em factorial)
-#4 - bolar uma forma de utilizar os Falses que vão ocorrendo para criar um sistema de segurança
+
